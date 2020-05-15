@@ -1,0 +1,10 @@
+<h1>Blog</h1>
+
+
+{% for blog in blogs %}
+
+<h2>{{ blog.title }}</h2>
+<h5>{{ blog.date }}</h5>
+<p>{{ blog.tweet }}</p>
+
+{% endfor %}
