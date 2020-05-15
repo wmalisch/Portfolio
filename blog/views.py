@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Blog
 
 def all_blogs(request):
-    blogs = Blog.objects.order_by('-date')[:7]
-    return render(request, 'blog/all_blogs.html', {'blogs':blogs})
+    blogs_count = Blog.objects.count
+    blogs = Blog.objects.order_by('-date')[:6]
+    return render(request, 'blog/all_blogs.html', {'blogs':blogs, 'count':blogs_count})
 
 def detail(request, blog_id):
     # first param is the object we are looking for

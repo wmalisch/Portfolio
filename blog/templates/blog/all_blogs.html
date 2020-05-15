@@ -1,10 +1,11 @@
 <h1>Blog</h1>
 
+<h2>Will has written a {{ count }} blog{{ blogs.count|pluralize }}</h2>
 
 {% for blog in blogs %}
 <!--Specify blog:detail, it is cleaner than just detail in the event that you have many apps with detail templates-->
 <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
-<h5>{{ blog.date }}</h5>
+<h5>{{ blog.date|date:'M d Y | h:i ' }}</h5>
 <p>{{ blog.tweet }}</p>
 
 {% endfor %}
