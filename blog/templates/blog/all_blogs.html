@@ -1,11 +1,23 @@
-<h1>Blog</h1>
+{% extends "portfolio/base.html" %}
 
-<h2>Will has written a {{ count }} blog{{ blogs.count|pluralize }}</h2>
+{% load static %}
+
+{% block content %}
+
+<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
+
+<h3 class="text-center mb-5">Will has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3>
 
 {% for blog in blogs %}
-<!--Specify blog:detail, it is cleaner than just detail in the event that you have many apps with detail templates-->
-<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
-<h5>{{ blog.date|date:'M d Y | h:i ' }}</h5>
-<p>{{ blog.tweet }}</p>
-
+<div class="row justify-content-center my-3">
+  <div class="col-md-10">
+    <a href="{% url 'blog:detail' blog.id %}">
+      <h2>{{ blog.title }}</h2>
+    </a>
+    <h5 class="text-muted">{{ blog.date|date:'M d Y | H:i '|upper }}</h5>
+    <h4>{{ blog.tweet|striptags|truncatechars:100 }}</h4>
+  </div>
+</div>
 {% endfor %}
+
+{% endblock %}

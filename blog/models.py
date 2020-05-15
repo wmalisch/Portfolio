@@ -6,3 +6,6 @@ class Blog(models.Model):
     tweet = models.CharField(max_length=320)
     url = models.URLField(blank=True)
 
+    def __str__(self):
+        return self.title
+
